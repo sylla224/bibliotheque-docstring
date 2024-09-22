@@ -11,8 +11,16 @@ class Bibliotheque:
             cls._instance.utilisateurs = []
             cls._instance.emprunts = {}
         return cls._instance
+    
 
     def ajouterLivre(self, livre:Livre):
+        """Fonction Pour Ajouter un Livre dans la Bibliotheque
+
+        Args:
+            livre (Livre): Un livre numerique ou papier 
+        returns:
+        Affiche un message si le livre est ajouté ou non
+        """
         #check if the book is already in the library
         for l in self.livres:
             if l.isbn == livre.isbn:
@@ -21,12 +29,27 @@ class Bibliotheque:
         print(f"Livre '{livre.titre}' ajouté.")
 
     def suppLivre(self, livre:Livre):
+        """Fonction pour supprimer un livre de la bibliotheque
+
+        Args:
+            livre (Livre): Un livre numerique ou papier
+        returns:
+        Affiche un message si le livre est supprimé ou non
+        """
         if livre in self.livres:
             self.livres.remove(livre)
             print(f"Livre '{livre.titre}' supprimé.")
         else:
             print(f"Livre '{livre}' non trouvé.")
     def MiseajourLivre(self, livre:Livre, stock:int):
+        """Fonction pour mettre à jour le stock d'un livre
+
+        Args:
+            livre (Livre): Un livre numerique ou papier
+            stock (int): Nouveau stock du livre
+        returns:
+        Affiche un message si le stock du livre est mis à jour ou non
+        """
         if livre in self.livres:
             livre.stock = stock
             print(f"Stock du livre '{livre.titre}' mis à jour.")
@@ -36,10 +59,19 @@ class Bibliotheque:
         return self._instance.livres
     def afficherLivre(self):
         #print all the books with headings
-        print("Titre Auteur ISBN Stock")
-        for livre in self.livres:
-            print(livre)
+        #print("Titre Auteur ISBN Stock")
+        for index, livre in enumerate(self.livres, start=1):
+            print(f"{index}. {livre}")
+                
     def EmprunterLivre(self, livre:Livre, user:User):
+        """Fonction pour emprunter un livre
+
+        Args:
+            livre (Livre): un livre numerique ou papier
+            user (User): un utilisateur
+        returns:
+        Affiche un message si le livre est emprunté ou non par l'utilisateur
+        """
         if livre is not None and user is not None:
             if (livre in self.livres) and (int(livre.stock) > 0):
                 if user.username not in self.emprunts:

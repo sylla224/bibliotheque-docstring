@@ -97,6 +97,14 @@ class Bibliotheque:
         else:
          print("Veuillez Creer un Utilisateur ou Ajouter un Livre")
     def RetournerLiver(self, livre:Livre, user:User):
+        """ Fonction pour retourner un livre emprunté
+
+        Args:
+            livre (Livre): Un livre numerique ou papier
+            user (User): Un utilisateur
+        returns:
+        Affiche un message si le livre est retourné ou non par l'utilisateur
+        """
         if user.username in self.emprunts:
             if livre in self.emprunts[user.username]:
                 self.emprunts[user.username].remove(livre)
@@ -109,14 +117,38 @@ class Bibliotheque:
         else:
             print(f"Utilisateur {user.username} n'a pas emprunté de livre.")
     def RechercherLiverParAuteur(self, auteur:str)->Livre:
+        """Fonction pour rechercher un livre par auteur
+
+        Args:
+            auteur (str): Nom de l'auteur
+
+        Returns:
+            Livre: Livre trouvé
+        """
         for livre in self.livres:
             if livre.auteur == auteur:
                 return livre
     def RechercherLiverParTitre(self, titre:str)->Livre:
+        """Fonction pour rechercher un livre par titre
+
+        Args:
+            titre (str): Titre du livre
+
+        Returns:
+            Livre: Livre trouvé
+        """
         for livre in self.livres:
             if livre.titre == titre:
                 return livre
     def RechercherLiverParISBN(self, isbn:str)->Livre:
+        """Fonction pour rechercher un livre par ISBN
+
+        Args:
+            isbn (str): ISBN du livre
+
+        Returns:
+            Livre: Livre trouvé
+        """
         for livre in self.livres:
             if livre.isbn == isbn:
                 return livre

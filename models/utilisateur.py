@@ -1,4 +1,12 @@
 class User:
+    """Classe pour les utilisateurs
+
+    Raises:
+        ValueError: Le nom d'utilisateur {username} existe déjà.
+
+    Returns:
+        _type_: User
+    """
     _usernames = set()
     def __init__(self, username, password, type_utilisateur:int):
         if User.username_exists(username):

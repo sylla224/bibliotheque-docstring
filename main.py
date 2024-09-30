@@ -1,7 +1,7 @@
-from models.livrenumerique import LivreNumerique
-from models.livrepapier import LivrePapier
-from models.bibliotheque import Bibliotheque
-from models.utilisateur import User
+from models import LivreNumerique
+from models import LivrePapier
+from models import Bibliotheque
+from models import User
 import typer
 
 app = typer.Typer()
